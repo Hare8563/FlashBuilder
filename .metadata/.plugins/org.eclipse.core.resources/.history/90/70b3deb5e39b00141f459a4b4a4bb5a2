@@ -37,7 +37,7 @@
 				
 				for(var i:uint=0;i<zip.getFileCount();i++){
 					var zipFile:ZipFile = zip.getFileAt(i);
-					var test;
+					
 					
 				}
 				
