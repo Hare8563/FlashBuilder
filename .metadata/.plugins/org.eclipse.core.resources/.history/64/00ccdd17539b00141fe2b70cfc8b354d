@@ -1,0 +1,27 @@
+// ActionScript file
+package Koigasaki
+{
+	import flash.events.MouseEvent;
+	
+	import mx.core.IMXMLObject;
+	
+	public class MainLoader implements IMXMLObject
+	{
+		private var view:KoigasakiLoader;
+		
+		public function initialized(document:Object, id:String):void
+		{
+			view = document as KoigasakiLoader;
+			
+		}
+		
+		public function Exit_clickHandler(event):void
+		{
+			
+			
+		}
+	}
+	
+	
+	
+}

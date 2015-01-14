@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="com.adobe.flexbuilder.editorcore.ui.pi.PropertiesView">
+		<item value="共通" key="TreeGridImpl.TopCategory"/>
+		<item value="true" key="共通"/>
+		<item value="214" key="AlphaCol1Width"/>
+		<item value="196" key="TreeGridImpl.ColumnZeroWidth"/>
+		<item value="130" key="AlphaCol0Width"/>
+		<item value="true" key="スタイル"/>
+		<item value="0" key="AlphaTopIndex"/>
+		<item value="alpha" key="TreeGridImpl.TopAttribute"/>
+		<item value="true" key="サイズと位置"/>
+		<item value="2" key="ViewOption"/>
+		<item value="179" key="TreeGridImpl.ColumnOneWidth"/>
+		<item value="true" key="レイアウト"/>
+		<list key="CategoryExpanded">
+			<item value="true"/>
+			<item value="true"/>
+			<item value="false"/>
+			<item value="false"/>
+			<item value="true"/>
+			<item value="false"/>
+			<item value="true"/>
+		</list>
+		<list key="CategoryNames">
+			<item value="共通"/>
+			<item value="イベント"/>
+			<item value="エフェクト"/>
+			<item value="サイズ"/>
+			<item value="スタイル"/>
+			<item value="レイアウト制約"/>
+			<item value="その他"/>
+		</list>
+	</section>
+</section>

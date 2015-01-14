@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="           760" height="470" minWidth="0" minHeight="0" xmlns:local="*" xmlns:fl="Lib.*">
+	<!--<fx:Style source="QuizOfWalkurePlayer.css"/>-->
+	
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
+		<local:QowPlay id="player"/>
+		<s:SWFLoader source="t1050_h01_19450.swf" id="EventSwf" />
+	</fx:Declarations>
+	<s:Group id="EventArea">	
+			<s:Image source="image/image 1.jpg"/>
+			<fl:MovieClip id="cg_mc" x="0.0" y="0.0" width="20.0" height="20.0" />
+			<fl:MovieClip id="front_mc" x="0.0" y="0.0" width="20.0" height="20.0" />
+			<s:Image id="fade_black" width="760" height="470" backgroundColor="#000000"
+				 chromeColor="#000000"/>
+			<s:Image id="fade_white" width="760" height="470" backgroundColor="#FFFFFF"
+					 chromeColor="#FFFFFF" />
+			<s:Group id="message_window" x="0" y="346" width="760.0" height="434.0">
+				<s:Image width="760" height="124" source="@Embed('image/image 9.png')"/>
+				<s:Label id="message" x="72" y="40" width="615.95" height="83.80" color="#FFFFFF"
+						 fontSize="16" fontWeight="bold" verticalAlign="middle"/>
+				<s:Label id="chara_name" x="72.0" y="10.0" width="615.95" height="29.80"
+						 color="#FFFFFF" fontSize="18" fontWeight="bold" verticalAlign="middle"/>
+				<s:SWFLoader id="push_mc" source="sprite 17.swf" x="668.00" y="100.0" width="20.00" height="16.0"/>
+				<mx:UIComponent id="btn_next" x="0" y="-310.0" width="758.95" height="430.0"/>
+				
+				<mx:Button id="btn_close" x="722.00" y="15.00" width="28" height="27"
+						   buttonMode="true" click="player.btn_closeClick(event)"
+						   disabledSkin="@Embed('image/image 20.png')"
+						   downSkin="@Embed('image/image 24.png')" enabled="true"
+						   overSkin="@Embed('image/image 22.png')"
+						   upSkin="@Embed('image/image 20.png')"/>
+				
+				<mx:Button id="btn_play" x="722.0" y="50.0" width="32.0" height="32.0"
+						   click="player.btn_playClick(event)" disabledSkin="@Embed('image/image 28.png')"
+						   downSkin="@Embed('image/image 32.png')"
+						   overSkin="@Embed('image/image 30.png')"
+						   upSkin="@Embed('image/image 28.png')"/>
+				<mx:Button id="btn_sound1" x="722.0" y="85.0" width="32.0" height="32.0"
+						   click="player.btn_soundClick(event)"
+						   disabledSkin="@Embed('image/image 40.png')"
+						   downSkin="@Embed('image/image 40.png')"
+						   overSkin="@Embed('image/image 38.png')"
+						   upSkin="@Embed('image/image 36.png')"/>	
+			</s:Group>
+			<mx:Button id="btn_r18" x="2.0" y="2.0" width="108.0" height="30.0" 
+					   upSkin="@Embed('image/image 45.png')" 
+					   downSkin="@Embed('image/image 47.png')"
+					   disabledSkin="@Embed('image/image 45.png')"
+					   overSkin="@Embed('image/image 46.png')"/>
+			<mx:Button id="btn_skip" x="703.0" y="2.0" width="54.0" height="34.0"
+				upSkin="@Embed('image/image 50.png')"
+				downSkin="@Embed('image/image 54.png')"
+				disabledSkin="@Embed('image/image 50.png')"
+				overSkin="@Embed('image/image 52.png')"/>
+		<fl:MovieClip id="popup_mc" x="0.0" y="0.0" width="20.0" height="20.0" />
+		<mx:UIComponent id="screen_click" x="0.0" y="0.0" width="760.0" height="470.0"
+						click="player.screen_Click(event)" visible="false"/>
+		</s:Group>
+</s:Application>

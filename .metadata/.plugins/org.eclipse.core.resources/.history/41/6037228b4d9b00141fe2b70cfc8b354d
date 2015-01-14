@@ -1,0 +1,23 @@
+// ActionScript file
+package Koigasaki{
+	import mx.core.IMXMLObject;
+	import flash.events.MouseEvent;
+	
+	public KoigasakiLoader implements IMXMLObject
+	{
+		function initialized(document:Object, id:String):void
+		{
+			
+			
+		}
+		
+		public function Exit_mouseOverHandler(event:MouseEvent):void
+		{
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	
+	
+	
+}

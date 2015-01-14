@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="940" height="720" minWidth="955" minHeight="600" xmlns:local="Koigasaki.*">
+	
+	<fx:Script>
+		<![CDATA[
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->	
+		<local:MainLoader id="koiloader" />
+	</fx:Declarations>
+
+	<s:Image id="background" x="0" y="0"/>
+	<s:SWFLoader id="mainContents" x="0" y="9" source=""/>
+	
+	<s:Group id="MessageWindowGroup" x="10" y="10" width="920" height="710"
+			 contentBackgroundAlpha="1.0">
+		<s:Image id="messageWindow" x="90" y="481" source="assets/image 5.png"/>
+		<s:Image x="815" y="504" smooth="true" source="assets/image 14.png"/>
+		<s:SWFLoader x="816" y="642" source="../sprite 13.swf"/>
+		<s:Label x="128" y="504" color="#FFFFFF" fontFamily="ヒラギノ" fontSize="27" fontWeight="normal"
+				 text="ラベル"/>
+		<s:TextArea x="128" y="539" width="679" height="142" borderVisible="false" color="#FFFFFF"
+					contentBackgroundAlpha="0.0" fontSize="32" text="ああああ"/>
+	</s:Group>
+	<s:Image id="Exit" x="12" y="622" smooth="true"
+			 source="assets/image 23.png"/>
+</s:Application>

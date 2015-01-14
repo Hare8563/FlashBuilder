@@ -1,0 +1,59 @@
+// ActionScript file
+package Koigasaki
+{
+	import flash.events.MouseEvent;
+	import mx.events.CloseEvent;
+	
+	import mx.controls.Alert;
+	import mx.core.IMXMLObject;
+	public class MainLoader implements IMXMLObject
+	{
+		private var view:KoigasakiLoader;
+		public var closeFlag:Boolean = false;
+		public var previousClose:Boolean = false;
+		
+		public function initialized(document:Object, id:String):void
+		{
+			view = document as KoigasakiLoader;
+		}
+		
+		public function Exit_clickHandler(event: MouseEvent):void
+		{
+			event.preventDefault();
+			Alert.show("終了してよろしいですか?", "警告", Alert.OK | Alert.CANCEL, 
+				null, alertCloseHandler);
+		}
+		
+		private function alertCloseHandler(event:CloseEvent):void {
+			if(event.detail == Alert.OK) {
+				this.exit();
+			}
+		}
+		
+		public function Close_clickHandler(event: MouseEvent):void
+		{
+			closeFlag = true;
+			previousClose = true;
+			view.MessageWindowGroup.move(view.MessageWindowGroup.x, view.MessageWindowGroup.y + 240);
+		}
+		
+		public function MSWindow_clickHandler(event:MouseEvent):void{
+			if(previousClose == true){
+				previousClose = false;
+			}
+			else{
+				if(closeFlag){	
+					view.MessageWindowGroup.move(view.MessageWindowGroup.x, view.MessageWindowGroup.y - 240);
+					closeFlag = false;
+				}
+				else{
+					//次の文章に進める
+					
+				}
+			}
+		}
+	}
+	
+	
+	
+}

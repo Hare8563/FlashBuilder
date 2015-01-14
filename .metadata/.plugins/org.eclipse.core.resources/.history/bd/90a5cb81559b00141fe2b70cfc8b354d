@@ -1,0 +1,36 @@
+// ActionScript file
+package Koigasaki
+{
+	import flash.events.MouseEvent;
+	
+	import mx.core.IMXMLObject;
+	
+	public class MainLoader implements IMXMLObject
+	{
+		private var view:KoigasakiLoader;
+		private var closeFlag:Boolean;
+		
+		public function initialized(document:Object, id:String):void
+		{
+			view = document as KoigasakiLoader;
+			closeFlag = false;
+		}
+		
+		public function Exit_clickHandler(event: MouseEvent):void
+		{
+			
+			
+		}
+		
+		public function Close_clickHandler(event: MouseEvent):void
+		{
+			closeFlag = true;
+			for(var i:int = 0; i < 240; i++){
+				view.MessageWindowGroup.y += 1;
+			}
+		}
+	}
+	
+	
+	
+}

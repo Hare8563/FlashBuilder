@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.adobe.flexbuilder.debug.launchConfigurationType.flash">
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_APPLICATION" value="src/Koigasaki/KoigasakiLoader.mxml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_PROJECT" value="KoigasakiLoader"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_RUN_URL" value="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/KoigasakiLoader/bin-debug/KoigasakiLoader.swf"/>
+<booleanAttribute key="com.adobe.flexbuilder.debug.ATTR_USE_DEFAULT_URLS" value="false"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/KoigasakiLoader"/>
+<listEntry value="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+<listEntry value="1"/>
+</listAttribute>
+</launchConfiguration>

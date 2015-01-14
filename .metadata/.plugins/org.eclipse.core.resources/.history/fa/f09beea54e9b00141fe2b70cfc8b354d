@@ -1,0 +1,27 @@
+// ActionScript file
+package Koigasaki{
+	import flash.events.MouseEvent;
+	
+	import mx.core.IMXMLObject;
+	
+	public MainLoader implements IMXMLObject
+	{
+		private var view:KoigasakiLoader;
+		
+		function initialized(document:Object, id:String):void
+		{
+			view = document as KoigasakiLoader;
+			
+		}
+		
+		public function Exit_mouseOverHandler(event:MouseEvent):void
+		{
+			// TODO Auto-generated method stub
+			view.Exit.source = "assets/image 25.png";
+			
+		}
+	}
+	
+	
+	
+}

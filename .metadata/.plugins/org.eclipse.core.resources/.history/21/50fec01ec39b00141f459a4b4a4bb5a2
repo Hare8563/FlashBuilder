@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="940" height="720" minWidth="955" minHeight="600" xmlns:local="Koigasaki.*" applicationComplete="appCompHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			private function appCompHandler(event: Event):void{
+				//起動時の処理
+				//ファイル選択画面を表示 
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->	
+		<local:MainLoader id="koiloader" />
+	</fx:Declarations>
+
+	<s:Image id="background" x="0" y="0"/>
+	<s:SWFLoader id="mainContents" x="0" y="9" source=""/>
+	
+	<s:Group id="MessageWindowGroup" x="-3" y="-914" width="929" height="1650"
+			 click="koiloader.MSWindow_clickHandler(event)" moveEffect="Move">
+		<s:Image id="messageWindow" x="106" y="1393" source="assets/image 5.png"/>
+		<mx:Button id="Close" click="koiloader.Close_clickHandler(event)" x="816" y="1420" upSkin="@Embed('assets/image 14.png')" downSkin="@Embed('assets/image 14.png')" overSkin="@Embed('assets/image 16.png')"/>
+		<s:SWFLoader x="829" y="1565" source="../sprite 13.swf"/>
+		<s:Label x="149" y="1420" color="#FFFFFF" fontFamily="ヒラギノ" fontSize="27" fontWeight="normal"
+				 text="ラベル"/>
+		<s:TextArea x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF"
+					contentBackgroundAlpha="0.0" fontSize="32" text="ああああ"/>
+	</s:Group>
+	<mx:Button click="koiloader.Exit_clickHandler(event)" id="Exit" x="12" y="622" downSkin="@Embed('assets/image 23.png')"  overSkin="@Embed('assets/image 25.png')"
+			 upSkin="@Embed('assets/image 23.png')" />
+
+</s:Application>
