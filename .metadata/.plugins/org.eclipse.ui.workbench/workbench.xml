@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="64" version="2.0">
 <workbenchAdvisor/>
-<window height="994" width="1920" x="1382" y="245">
+<window height="994" width="1920" x="273" y="30">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -12,7 +12,7 @@
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="158" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="62" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="32" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -34,7 +34,6 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
@@ -42,13 +41,9 @@
 <editor focus="true" id="com.adobe.flexbuilder.editors.mxml.MXMLEditor" name="KoigasakiLoader.mxml" partName="KoigasakiLoader.mxml" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml" title="KoigasakiLoader.mxml" tooltip="KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
 </editor>
-<editor id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="KoigasakiLoader.as" partName="KoigasakiLoader.as" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as" title="KoigasakiLoader.as" tooltip="KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
 <editor id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="MainLoader.as" partName="MainLoader.as" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/KoigasakiLoader/src/Koigasaki/MainLoader.as" title="MainLoader.as" tooltip="KoigasakiLoader/src/Koigasaki/MainLoader.as" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/KoigasakiLoader/src/Koigasaki/MainLoader.as"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1434" selectionTopPixel="467"/>
 </editor>
 </editors>
 <views>
@@ -63,12 +58,9 @@
 <fpeExpanded>
 <fpeElement fpePath="/KoigasakiLoader"/>
 <fpeElement fpePath="/KoigasakiLoader/src"/>
-<fpeElement fpePath="/KoigasakiLoader/src/Koigasaki"/>
-<fpeElement fpePath="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
-<fpeElement fpePath="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
 </fpeExpanded>
 <fpeSelection>
-<fpeElement fpePath="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
+<fpeElement fpePath="/KoigasakiLoader"/>
 </fpeSelection>
 <filters>
 <filter element=".flexProperties" isEnabled="true"/>
@@ -92,10 +84,9 @@
 </filters>
 <expanded>
 <element path="/KoigasakiLoader"/>
-<element path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
 </expanded>
 <selection>
-<element path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
+<element path="/KoigasakiLoader"/>
 </selection>
 </viewState>
 </view>
@@ -115,6 +106,10 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="問題">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="問題">
+<expanded>
+<category IMemento.internal.id="警告"/>
+<category IMemento.internal.id="警告 (1 項目)"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="1006"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -378,19 +373,57 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.mxml.MXMLEditor" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/KoigasakiLoader/src/Koigasaki/MainLoader.as"/>
+</editors>
+<item historyLabel="KoigasakiLoader.mxml" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.as" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MainLoader.as" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="0">
+<position info="not_deleted" x="439" y="0"/>
+</item>
+<item historyLabel="MainLoader.as" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="0">
+<position/>
+</item>
+<item historyLabel="MainLoader.as" index="2">
+<position/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="0">
+<position/>
+</item>
+<item historyLabel="MainLoader.as" index="2">
+<position info="not_deleted" x="1514" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="0">
+<position info="not_deleted" x="719" y="0"/>
+</item>
+<item historyLabel="MainLoader.as" index="2">
+<position info="not_deleted" x="1434" y="0"/>
+</item>
+<item active="true" historyLabel="KoigasakiLoader.mxml" index="0">
+<position info="not_deleted" x="719" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1a212ed"/>
-<trimItem IMemento.internal.id="outlineHolder"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="propertiesHolder"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -399,19 +432,15 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottomLayout"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="MainLoader.as" tooltip="KoigasakiLoader/src/Koigasaki/MainLoader.as">
-<persistable path="/KoigasakiLoader/src/Koigasaki/MainLoader.as"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="KoigasakiLoader.as" tooltip="KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as">
-<persistable path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as"/>
-</file>
 <file factoryID="com.adobe.flexbuilder.editors.derived.ui.startpage.StartPageEditorInput" id="com.adobe.flexbuilder.ui.StartPage" name="Web ブラウザ" tooltip="Flash Builder スタートアップスクリーン">
 <persistable iconpath="platform:/plugin/com.adobe.flexbuilder.ui/icons/fb_app_16.png" style="20" tooltip="Flash Builder スタートアップスクリーン" url="file:/Applications/Adobe Flash Builder 4.6/eclipse/plugins/com.adobe.flexbuilder.ui.nl1_4.6.1.335153/nl/ja/welcome/index.html?firstLaunch=false&amp;edition=stnd&amp;version=460"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" name="MainLoader.as" tooltip="KoigasakiLoader/src/Koigasaki/MainLoader.as">
+<persistable path="/KoigasakiLoader/src/Koigasaki/MainLoader.as"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="common_dialog.swf" tooltip="QuizOfWalkurePlayer/src/common_dialog.swf">
 <persistable path="/QuizOfWalkurePlayer/src/common_dialog.swf"/>
