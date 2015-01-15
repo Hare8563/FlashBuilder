@@ -118,7 +118,7 @@
 		<s:Label id="nameArea" x="149" y="1420" color="#FFFFFF" fontFamily="ヒラギノ" fontSize="27" fontWeight="normal"
 				 text=""/>
 		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF"
-					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください"/>
+					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください" editable="false"/>
 	</s:Group>
 	<mx:Button click="koiloader.Exit_clickHandler(event)" id="Exit" x="12" y="622" downSkin="@Embed('assets/image 23.png')"  overSkin="@Embed('assets/image 25.png')"
 			 upSkin="@Embed('assets/image 23.png')" />

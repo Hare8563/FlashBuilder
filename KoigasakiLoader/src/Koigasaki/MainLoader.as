@@ -21,6 +21,7 @@ package Koigasaki
 	import mx.core.MovieClipAsset;
 	import mx.events.CloseEvent;
 
+
 	public class MainLoader implements IMXMLObject
 	{
 		private var view:KoigasakiLoader;
@@ -33,11 +34,9 @@ package Koigasaki
 		public var MovieObj:Object={};
 		public var ImgObj:Object={};
 		public var currentSoundChannel:SoundChannel;
-		
 		public function initialized(document:Object, id:String):void
 		{
 			view = document as KoigasakiLoader;
-			
 		}
 		
 		public function loadedZipFile():void{
@@ -107,8 +106,7 @@ package Koigasaki
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("text")){
 					var name:String = ScenarioObj[ScenarioIndex].text.name;
 					var serif:String = ScenarioObj[ScenarioIndex].text.serif;
-					view.nameArea.text = name;
-					view.msArea.text = serif;
+
 				}
 				ScenarioIndex++;
 			}
@@ -152,8 +150,5 @@ package Koigasaki
 				}
 			}
 		}	
-	}
-	
-	
-	
+	}	
 }
