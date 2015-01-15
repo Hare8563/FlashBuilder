@@ -1,12 +1,8 @@
 // ActionScript file
 package Koigasaki
 {
-	import com.coltware.airxzip.ZipEntry;
-	import com.coltware.airxzip.ZipEvent;
-	import com.coltware.airxzip.ZipFileReader;
 	
 	import flash.desktop.NativeApplication;
-	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -16,11 +12,15 @@ package Koigasaki
 	import flash.utils.getTimer;
 	
 	import mx.controls.Alert;
-	import mx.controls.MovieClipSWFLoader;
 	import mx.core.IMXMLObject;
-	import mx.core.MovieClipAsset;
 	import mx.events.CloseEvent;
+	
+	import caurina.transitions.Tweener;
+	import caurina.transitions.properties.TextShortcuts;
+	
+	import flashx.textLayout.formats.Float;
 
+	TextShortcuts.init();
 
 	public class MainLoader implements IMXMLObject
 	{
@@ -34,6 +34,7 @@ package Koigasaki
 		public var MovieObj:Object={};
 		public var ImgObj:Object={};
 		public var currentSoundChannel:SoundChannel;
+		public var currentBgmChannel:SoundChannel;
 		public function initialized(document:Object, id:String):void
 		{
 			view = document as KoigasakiLoader;
@@ -42,9 +43,26 @@ package Koigasaki
 		public function loadedZipFile():void{
 			
 			while(1){
+				if(ScenarioObj[ScenarioIndex].hasOwnProperty("end")){
+					NativeApplication.nativeApplication.exit();	
+					break;
+				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("bgm")){
 					var bgmData:Object = ScenarioObj[ScenarioIndex].bgm;
-					Sound(Mp3Obj[bgmData.src]).play();
+					if(bgmData.hasOwnProperty("src")){
+						var sound:Sound = Sound(Mp3Obj[bgmData.src]);
+						currentBgmChannel = sound.play();
+						var func:Function;
+						currentBgmChannel.addEventListener(Event.SOUND_COMPLETE, func = function (e:Event):void{
+							e.currentTarget.removeEventListener(Event.SOUND_COMPLETE, func);
+							currentBgmChannel = sound.play();
+						});
+					}
+					if(bgmData.hasOwnProperty("action")){
+						if(bgmData.action == "finish"){
+							currentBgmChannel.stop();
+						}
+					}
 				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("bg")){
 					view.background.source = ImgObj[ScenarioObj[ScenarioIndex].bg.src];
@@ -72,6 +90,7 @@ package Koigasaki
 					
 					if(!ScenarioObj[ScenarioIndex].movie.hasOwnProperty("action")){
 						//もし、loopアクションが入ってない場合
+						
 						view.mainContents.addEventListener(Event.COMPLETE,
 							function(e:Event):void
 							{
@@ -83,7 +102,7 @@ package Koigasaki
 									});
 							});
 					}
-					else{
+					else if(ScenarioObj[ScenarioIndex].movie.action == "loop"){
 						view.mainContents.addEventListener(Event.COMPLETE, 
 							function(e:Event):void
 							{
@@ -94,6 +113,9 @@ package Koigasaki
 										if(rootMc.currentFrame == rootMc.totalFrames) rootMc.gotoAndPlay(1);
 									});
 							});
+					}
+					else if(ScenarioObj[ScenarioIndex].movie.action == "finish"){
+						view.mainContents.source = "";
 					}
 					
 					//view.mainContents.gotoFirstFrameAndStop();
@@ -106,7 +128,12 @@ package Koigasaki
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("text")){
 					var name:String = ScenarioObj[ScenarioIndex].text.name;
 					var serif:String = ScenarioObj[ScenarioIndex].text.serif;
-
+					
+					
+					view.msArea.text = "";
+					view.nameArea.text = name;
+					var t:Number = serif.length * 0.1;
+					Tweener.addTween(view.msArea, {time:t, _text:serif, transition: "linear"});
 				}
 				ScenarioIndex++;
 			}
