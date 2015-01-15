@@ -128,11 +128,18 @@ package Koigasaki
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("text")){
 					var name:String = ScenarioObj[ScenarioIndex].text.name;
 					var serif:String = ScenarioObj[ScenarioIndex].text.serif;
-					
+					if(name != null){
+						name = name.replace(/{s1}/, "花山");
+						name = name.replace(/{n1}/,"晴男");
+					}
+					if(serif != null){
+						serif = serif.replace(/{s1}/g, "花山");
+						serif = serif.replace(/{n1}/g,"晴男");
+					}
 					
 					view.msArea.text = "";
 					view.nameArea.text = name;
-					var t:Number = serif.length * 0.1;
+					var t:Number = serif.length * 0.05;
 					Tweener.addTween(view.msArea, {time:t, _text:serif, transition: "linear"});
 				}
 				ScenarioIndex++;
