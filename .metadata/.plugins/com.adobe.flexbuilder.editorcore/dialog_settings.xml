@@ -5,10 +5,10 @@
 		<item value="true" key="共通"/>
 		<item value="214" key="AlphaCol1Width"/>
 		<item value="196" key="TreeGridImpl.ColumnZeroWidth"/>
-		<item value="130" key="AlphaCol0Width"/>
 		<item value="true" key="スタイル"/>
-		<item value="0" key="AlphaTopIndex"/>
+		<item value="130" key="AlphaCol0Width"/>
 		<item value="alpha" key="TreeGridImpl.TopAttribute"/>
+		<item value="0" key="AlphaTopIndex"/>
 		<item value="true" key="サイズと位置"/>
 		<item value="2" key="ViewOption"/>
 		<item value="179" key="TreeGridImpl.ColumnOneWidth"/>

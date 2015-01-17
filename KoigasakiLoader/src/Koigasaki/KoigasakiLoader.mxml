@@ -109,7 +109,7 @@
 
 	<s:Image id="background" x="0" y="0"/>
 	<s:SWFLoader id="mainContents" x="0" y="0" source="" />
-	
+	<s:SWFLoader id="Character" source="" x="470" y="50"/>
 	<s:Group id="MessageWindowGroup" x="0" y="-940" width="940" height="1650"
 			 click="koiloader.MSWindow_clickHandler(event)" moveEffect="Move">
 		<s:Image id="messageWindow" x="106" y="1393" source="assets/image 5.png"/>

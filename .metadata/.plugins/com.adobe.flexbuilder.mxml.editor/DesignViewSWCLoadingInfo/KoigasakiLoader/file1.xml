@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ListDetails label="SWC Loading Details" projectName="KoigasakiLoader">
+
+
+<LoadedSetList label="LoadedSet List">
+
+
+<LoadingSet label="LoadingSet1:">
+
+
+<item  label="aircore.swc239598241" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/aircore.swc239598241/library.swf"/>
+
+
+<item  label="applicationupdater.swc1851008801" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/applicationupdater.swc1851008801/library.swf"/>
+
+
+<item  label="applicationupdater_ui.swc935915561" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/applicationupdater_ui.swc935915561/library.swf"/>
+
+
+<item  label="servicemonitor.swc120353665" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/servicemonitor.swc120353665/library.swf"/>
+
+
+<item  label="coltware_airxzip_v1_0_1.swc-774370887" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/coltware_airxzip_v1_0_1.swc-774370887/library.swf"/>
+
+
+<item  label="tweener.swc609110201" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/tweener.swc609110201/library.swf"/>
+
+
+</LoadingSet>
+
+
+<LoadingSet label="LoadingSet2:">
+
+
+<item  label="aircore.swc239598241" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/aircore.swc239598241/library.swf"/>
+
+
+<item  label="applicationupdater.swc1851008801" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/applicationupdater.swc1851008801/library.swf"/>
+
+
+<item  label="applicationupdater_ui.swc935915561" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/applicationupdater_ui.swc935915561/library.swf"/>
+
+
+<item  label="servicemonitor.swc120353665" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/servicemonitor.swc120353665/library.swf"/>
+
+
+<item  label="coltware_airxzip_v1_0_1.swc-774370887" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/coltware_airxzip_v1_0_1.swc-774370887/library.swf"/>
+
+
+</LoadingSet>
+
+
+</LoadedSetList>
+
+
+<RemovedSetList label="RemovedSet List">
+
+
+<RemovedSet label="RemovedSet1:">
+
+
+<item  label="No Item present in this set"/>
+
+
+</RemovedSet>
+
+
+<RemovedSet label="RemovedSet2:">
+
+
+<item  label="tweener.swc609110201" path="/Users/tetsushi2/Documents/Adobe Flash Builder 4.6/.metadata/.plugins/com.adobe.flexbuilder.codemodel/SwcCache/tweener.swc609110201/library.swf"/>
+
+
+</RemovedSet>
+
+
+</RemovedSetList>
+
+
+</ListDetails>
+
+

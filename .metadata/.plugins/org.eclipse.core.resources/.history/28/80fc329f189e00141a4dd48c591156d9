@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="940" height="720" minWidth="940" minHeight="720" xmlns:local="Koigasaki.*" applicationComplete="appCompHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.coltware.airxzip.ZipEntry;
+			import com.coltware.airxzip.ZipEvent;
+			import com.coltware.airxzip.ZipFileReader;
+			
+			import flash.filesystem.File;
+			import flash.net.FileFilter;
+			
+			import mx.controls.Alert;
+			
+			public var FullPath:String; 
+			private var _file:File; 
+			private var _FileStream:FileStream; 
+			
+			
+			private function appCompHandler(event: Event):void{
+				//起動時の処理
+				//ファイル選択画面を表示   
+				if (Capabilities.os.substring(0,3) == "Mac"){   
+					FullPath = "file://";  
+				}else if(Capabilities.os.substring(0,3)=="Win"){   
+					FullPath = "file:///";  
+				}   
+				
+				_file = new File();
+				_file.addEventListener(Event.SELECT, onSelected);
+				_file.addEventListener(Event.CANCEL, onCancel);
+				
+				var _filter:FileFilter = new FileFilter("zipファイル", "*.zip");
+				_file.browseForOpen("シーンのZIPファイル選択", [_filter]);
+			}
+			
+			private function onSelected(event:Event):void{
+				var zipReader: ZipFileReader;
+				zipReader = new ZipFileReader();
+				
+				zipReader.open(_file);
+				var jSonObj:Object;
+				var entries:Array = zipReader.getEntries();
+				var baseDir:File = File.documentsDirectory;
+				
+				for(var i:int = 0;i < entries.length;i++){
+					var entry:ZipEntry = entries[i] as ZipEntry;
+					var filename:String = entry.getFilename();
+					
+					if(!entry.isDirectory()){
+						var bytes:ByteArray = zipReader.unzip(entry);
+						if(/(\w+)\.json$/.test(filename)){
+							//jsonファイルを見つける
+							koiloader.ScenarioObj = JSON.parse(bytes.toString());
+						}
+						if(/(\w+)\.mp3$/.test(filename)){
+							var sound:Sound = new Sound();
+							sound.loadCompressedDataFromByteArray(bytes, bytes.length);
+							koiloader.Mp3Obj[filename] = sound;
+						}
+						if(/(\w+)\.swf$/.test(filename)){
+							koiloader.MovieObj[filename] = bytes;
+							//ロード方法
+//							var loaderContext:LoaderContext = new LoaderContext();
+//							loaderContext.allowLoadBytesCodeExecution = true;
+//							mainContents.loaderContext = loaderContext;
+//							mainContents.source = koiloader.MovieObj[filename];
+						}
+						if(/(\w+)\.jpg$/.test(filename)){
+							koiloader.ImgObj[filename] = bytes;
+							//ロード法
+							//background.source = koiloader.ImgObj[filename];
+						}
+					}
+					
+//					if(entry.isDirectory()){
+//						var dir:File = baseDir.resolvePath(filename);
+//						dir.createDirectory();
+//					}
+//					else{
+//						var bytes:ByteArray = zipReader.unzip(entry);
+//						var file:File = File.desktopDirectory.resolvePath(filename);
+//						var fs:FileStream = new FileStream();
+//						fs.open(file, FileMode.WRITE);
+//						fs.writeBytes(bytes,0,bytes.length);
+//						fs.close();
+//					}	
+					//  ここで、ByteArrayのデータをファイル等に書き出してください。
+					//  getFilename() は、文字コードを自動的にSJISもしくはUTF-8を判別します。
+					//  MACの濁点も解決します。
+					//  ただし、展開処理で bytearray.uncompress(...) を使っているだけなので、なぜか解凍が失敗するものもあります。
+				}
+				koiloader.loadedZipFile();
+			}
+			private function onCancel(event:Event):void{
+				NativeApplication.nativeApplication.exit();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->	
+		<local:MainLoader id="koiloader" />
+	</fx:Declarations>
+
+	<s:Image id="background" x="0" y="0"/>
+	<s:SWFLoader id="mainContents" x="0" y="0" source="" />
+	
+	<s:Group id="MessageWindowGroup" x="0" y="-940" width="940" height="1650"
+			 click="koiloader.MSWindow_clickHandler(event)" moveEffect="Move">
+		<s:Image id="messageWindow" x="106" y="1393" source="assets/image 5.png"/>
+		<mx:Button id="Close" click="koiloader.Close_clickHandler(event)" x="816" y="1420" upSkin="@Embed('assets/image 14.png')" downSkin="@Embed('assets/image 14.png')" overSkin="@Embed('assets/image 16.png')"/>
+		<s:SWFLoader x="829" y="1565" source="assets/sprite 13.swf"/>
+		<s:Label id="nameArea" x="149" y="1420" color="#FFFFFF" fontFamily="ヒラギノ" fontSize="27" fontWeight="normal"
+				 text=""/>
+		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF"
+					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください" editable="false" selectable="false"/>
+	</s:Group>
+	<mx:Button click="koiloader.Exit_clickHandler(event)" id="Exit" x="12" y="600" downSkin="@Embed('assets/image 23.png')"  overSkin="@Embed('assets/image 25.png')"
+			 upSkin="@Embed('assets/image 23.png')" />
+
+</s:WindowedApplication>

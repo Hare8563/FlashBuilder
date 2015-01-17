@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="64" version="2.0">
 <workbenchAdvisor/>
-<window height="994" width="1920" x="273" y="30">
+<window height="994" width="1920" x="225" y="22">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -12,7 +12,7 @@
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="158" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="62" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="32" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="76" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -50,6 +50,9 @@
 <view id="org.eclipse.ui.views.ProgressView" partName="進行状況">
 <viewState/>
 </view>
+<view id="com.adobe.flexbuilder.mxml.editor.design.internal.errors.view.DesignModeProblemsView" partName="デザインモードの問題">
+<viewState/>
+</view>
 <view id="org.eclipse.debug.ui.DebugView" partName="デバッグ">
 <viewState/>
 </view>
@@ -58,9 +61,10 @@
 <fpeExpanded>
 <fpeElement fpePath="/KoigasakiLoader"/>
 <fpeElement fpePath="/KoigasakiLoader/src"/>
+<fpeElement fpePath="/KoigasakiLoader/src/assets"/>
 </fpeExpanded>
 <fpeSelection>
-<fpeElement fpePath="/KoigasakiLoader"/>
+<fpeElement fpePath="/KoigasakiLoader/src/assets"/>
 </fpeSelection>
 <filters>
 <filter element=".flexProperties" isEnabled="true"/>
@@ -85,9 +89,7 @@
 <expanded>
 <element path="/KoigasakiLoader"/>
 </expanded>
-<selection>
-<element path="/KoigasakiLoader"/>
-</selection>
+<selection/>
 </viewState>
 </view>
 <view id="com.adobe.flexbuilder.monitors.network.view.NetworkMonitorView" partName="ネットワークモニター">
@@ -107,8 +109,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="問題">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="問題">
 <expanded>
-<category IMemento.internal.id="警告"/>
-<category IMemento.internal.id="警告 (1 項目)"/>
+<category IMemento.internal.id="警告 (2 項目)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="1006"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -196,6 +197,7 @@
 <view id="com.adobe.flexbuilder.monitors.network.view.NetworkMonitorView"/>
 <view id="com.adobe.flexbuilder.as.editor.asdocviewer"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="com.adobe.flexbuilder.mxml.editor.design.internal.errors.view.DesignModeProblemsView"/>
 <view id="com.adobe.flexbuilder.packageexplorer"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.ui.views.ProgressView"/>
@@ -219,7 +221,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.1503405" ratioLeft="287" ratioRight="1622" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1a212ed"/>
-<info folder="true" part="statesViewHolder" ratio="0.7819642" ratioLeft="1266" ratioRight="353" relationship="2" relative="org.eclipse.ui.editorss">
+<info folder="true" part="statesViewHolder" ratio="0.71958" ratioLeft="1165" ratioRight="454" relationship="2" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="com.adobe.flexbuilder.mxml.editor.states.StatesViewer" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
@@ -237,20 +239,21 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomLayout" ratio="0.55187637" ratioLeft="500" ratioRight="406" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottomLayout" ratio="0.7152318" ratioLeft="648" ratioRight="258" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="問題"/>
 <page content="com.adobe.flexbuilder.dcrad.views.DataServicesView" label="データとサービス"/>
 <page content="com.adobe.flexbuilder.monitors.network.view.NetworkMonitorView" label="ネットワークモニター"/>
 <page content="com.adobe.flexbuilder.as.editor.asdocviewer" label="ASDoc"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="コンソール"/>
-<page content="com.adobe.flexbuilder.mxml.editor.design.internal.errors.view.DesignModeProblemsView" label="LabelNotFound"/>
+<page content="com.adobe.flexbuilder.mxml.editor.design.internal.errors.view.DesignModeProblemsView" label="デザインモードの問題"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
@@ -378,6 +381,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.mxml.MXMLEditor" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.as"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor" path="/KoigasakiLoader/src/Koigasaki/MainLoader.as"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.flexbuilder.mxml.editor.MXMLCodeEditor" path="/KoigasakiLoader/src/Koigasaki/KoigasakiLoader.mxml"/>
 </editors>
 <item historyLabel="KoigasakiLoader.mxml" index="0">
 <position info="not_deleted" x="0" y="0"/>
@@ -415,8 +419,26 @@
 <item historyLabel="MainLoader.as" index="2">
 <position info="not_deleted" x="1434" y="0"/>
 </item>
-<item active="true" historyLabel="KoigasakiLoader.mxml" index="0">
+<item historyLabel="KoigasakiLoader.mxml" index="0">
 <position info="not_deleted" x="719" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="3">
+<position info="not_deleted" x="2421" y="0"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="3">
+<position info="not_deleted" x="3613" y="143"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="3">
+<position info="not_deleted" x="3554" y="55"/>
+</item>
+<item historyLabel="KoigasakiLoader.mxml" index="3">
+<position info="not_deleted" x="3514" y="38"/>
+</item>
+<item active="true" historyLabel="KoigasakiLoader.mxml" index="3">
+<position info="not_deleted" x="3554" y="55"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

@@ -4,6 +4,7 @@ package Koigasaki
 	
 	import flash.desktop.NativeApplication;
 	import flash.display.MovieClip;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.media.Sound;
@@ -64,8 +65,58 @@ package Koigasaki
 						}
 					}
 				}
+				if(ScenarioObj[ScenarioIndex].hasOwnProperty("effect")){
+					//vibe
+					//bow
+					//blink
+				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("bg")){
 					view.background.source = ImgObj[ScenarioObj[ScenarioIndex].bg.src];
+				}
+				if(ScenarioObj[ScenarioIndex].hasOwnProperty("char")){
+					var charProp:Object = ScenarioObj[ScenarioIndex].char;
+					if(charProp.hasOwnProperty("action")){
+						if(charProp.action == "finish"){
+							view.Character.source = "";
+						}
+					}
+					if(charProp.hasOwnProperty("src")){
+						var loaderContext:LoaderContext = new LoaderContext();
+						loaderContext.allowLoadBytesCodeExecution = true;
+						view.Character.loaderContext = loaderContext;
+						
+						if(view.Character.source == MovieObj[charProp.src]){
+							var mvClip:MovieClip= view.Character.content as MovieClip;
+							
+							if(charProp.hasOwnProperty("eye")){
+								var eye:MovieClip = mvClip.mv_char.mv_eye as MovieClip;
+								eye.addEventListener(Event.EXIT_FRAME, function(e:Event):void{eye.stop();});
+								eye.gotoAndPlay(charProp.eye + 1);
+							}
+							if(charProp.hasOwnProperty("lip")){
+								var lip:MovieClip = mvClip.mv_char.mv_lip as MovieClip;
+								lip.addEventListener(Event.EXIT_FRAME, function(e:Event):void{lip.stop();});
+								lip.gotoAndPlay(charProp.lip + 1);	
+							}
+						}else{
+							view.Character.source = MovieObj[charProp.src];
+						}
+						view.Character.addEventListener(Event.COMPLETE, function(e:Event):void{
+							var mvClip:MovieClip= e.target.content as MovieClip;
+							
+							if(charProp.hasOwnProperty("eye")){
+								var eye:MovieClip = mvClip.mv_char.mv_eye as MovieClip;
+								eye.addEventListener(Event.EXIT_FRAME, function(e:Event):void{eye.stop();});
+								eye.gotoAndPlay(charProp.eye + 1);
+							}
+							if(charProp.hasOwnProperty("lip")){
+								var lip:MovieClip = mvClip.mv_char.mv_lip as MovieClip;
+								lip.addEventListener(Event.EXIT_FRAME, function(e:Event):void{lip.stop();});
+								lip.gotoAndPlay(charProp.lip + 1);	
+							}
+							
+						});	
+					}
 				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("wait")){
 					if(ScenarioObj[ScenarioIndex].wait < 0){
@@ -123,7 +174,9 @@ package Koigasaki
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("vo")){
 					if(currentSoundChannel != null) currentSoundChannel.stop();
 					var voData:Object = ScenarioObj[ScenarioIndex].vo;
-					currentSoundChannel = Sound(Mp3Obj[voData.src]).play();
+					if(Mp3Obj.hasOwnProperty(voData.src)){
+						currentSoundChannel = Sound(Mp3Obj[voData.src]).play();
+					}
 				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("text")){
 					var name:String = ScenarioObj[ScenarioIndex].text.name;
