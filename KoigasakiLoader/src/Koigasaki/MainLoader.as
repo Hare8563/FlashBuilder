@@ -21,6 +21,7 @@ package Koigasaki
 	import spark.components.Image;
 	
 	import a24.tween.Tween24;
+	import a24.tween.events.Tween24Event;
 	
 	import caurina.transitions.Tweener;
 	import caurina.transitions.properties.TextShortcuts;
@@ -209,12 +210,11 @@ package Koigasaki
 		
 	private function bgAction(param:Object):void{
 	var img:Image = new Image();
-
+	var tweenList:Array;
 	if(param.hasOwnProperty("src")){
 		img.source = ImgObj[param.src];
 	}
 		if(param.hasOwnProperty("type")){
-			
 			if (param["type"] == null){
 				var width:Number = view.width/10;
 				var height:Number = view.height;
@@ -247,9 +247,24 @@ package Koigasaki
 				this.tween.play();
 				return;
 			}
-			
+			else if (param["type"] == "f" || param["type"] == "q"){
+				tweenList=new Array();
+				if (view.background.source != null){
+					var tween:Tween24 = Tween24.serial(Tween24.tween(view.background, 0, Tween24.ease.QuadOut).fadeOut());
+					tween.addEventListener(Tween24Event.COMPLETE, function(e:Event):void{
+						view.background.source = img.source;
+						Tween24.tween(view.background, 0, Tween24.ease.QuadInOut).fadeIn().play();
+						return;
+					});
+					tween.play();
+				}	
+			}
 		}
-	
+		else{
+			return;
+		}
+		
+		return;
 	}
 		
 		public function Exit_clickHandler(event: MouseEvent):void
