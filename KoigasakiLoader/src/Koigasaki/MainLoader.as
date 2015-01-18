@@ -3,7 +3,9 @@ package Koigasaki
 {
 	
 	import flash.desktop.NativeApplication;
+	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -14,7 +16,12 @@ package Koigasaki
 	
 	import mx.controls.Alert;
 	import mx.core.IMXMLObject;
+	import mx.core.UIComponent;
 	import mx.events.CloseEvent;
+	
+	import spark.components.Image;
+	
+	import a24.tween.Tween24;
 	
 	import caurina.transitions.Tweener;
 	import caurina.transitions.properties.TextShortcuts;
@@ -29,6 +36,8 @@ package Koigasaki
 		private var closeFlag:Boolean = false;
 		private var previousClose:Boolean = false;
 		private var ScenarioIndex:int = 0;
+		private var tween:Tween24 = null;
+		private var mv_bg:MovieClip;
 		
 		public var ScenarioObj:Object;
 		public var Mp3Obj:Object={};
@@ -71,7 +80,7 @@ package Koigasaki
 					//blink
 				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("bg")){
-					view.background.source = ImgObj[ScenarioObj[ScenarioIndex].bg.src];
+					this.bgAction(ScenarioObj[ScenarioIndex].bg);
 				}
 				if(ScenarioObj[ScenarioIndex].hasOwnProperty("char")){
 					var charProp:Object = ScenarioObj[ScenarioIndex].char;
@@ -199,7 +208,52 @@ package Koigasaki
 			}
 		}
 		
-
+	private function bgAction(param:Object):void{
+	var img:Image = new Image();
+	var ui:UIComponent = view.effect;
+	
+	if(param.hasOwnProperty("src")){
+		img.source = ImgObj[param.src];
+	}
+		if(param.hasOwnProperty("type")){
+			
+			if (param["type"] == null){
+				var width:Number = view.width/10;
+				var height:Number = view.height;
+				
+				var i:int= 0;
+				var mask:MovieClip;
+				var s:Shape;
+				var mc_mask:MovieClip= new MovieClip();
+				var targets:Array=new Array();
+				while (i < 10){	
+					mask = new MovieClip();
+					s = new Shape();
+					s.graphics.beginFill(0);
+					s.graphics.drawRect(0, 0, width, height);
+					s.graphics.endFill();
+					mask.addChild(s);
+					mask.x = i * width;
+					mc_mask.addChild(mask);
+					targets.push(mask);
+					i = (i + 1);
+				}
+				if (img != null){
+					//view.background.source = img.source;
+					
+					ui.addChild(mc_mask);
+					ui.mask = mc_mask;
+				}
+				this.tween = Tween24.lag(0.1, 
+					Tween24.tween(targets, 0.5, Tween24.ease.QuadOut).$x(width).width(0), 
+					Tween24.tween(targets, 0.5, Tween24.ease.ExpoInOut).fadeOut());
+				this.tween.play();
+				return;
+			}
+			
+		}
+	
+	}
 		
 		public function Exit_clickHandler(event: MouseEvent):void
 		{
