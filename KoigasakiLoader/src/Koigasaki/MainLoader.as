@@ -58,6 +58,10 @@ package Koigasaki
 		}
 		
 		public function action():void{
+			if(view.background.alpha <= 0){
+				Tween24.tween(view.background, 0.1, Tween24.ease.QuadInOut).fadeIn().play();
+			}
+			
 			this.tween = null;
 			this.script = ScenarioObj[ScenarioIndex];
 			
@@ -184,7 +188,7 @@ package Koigasaki
 				if(charProp.hasOwnProperty("lip")){
 					var lip:MovieClip = mvClip.mv_char.mv_lip as MovieClip;
 					lip.addEventListener(Event.EXIT_FRAME, function(e:Event):void{lip.stop();});
-					lip.gotoAndPlay(charProp.lip + 1);	
+					lip.gotoAndPlay(charProp.lip + 1);
 				}
 			}else{
 				view.Character.source = MovieObj[charProp.src];
@@ -202,7 +206,6 @@ package Koigasaki
 					lip.addEventListener(Event.EXIT_FRAME, function(e:Event):void{lip.stop();});
 					lip.gotoAndPlay(charProp.lip + 1);	
 				}
-				
 			});	
 		}
 		this.actionComplete();
@@ -277,32 +280,34 @@ package Koigasaki
 		this.actionComplete();
 		return;
 	}
-
+private var bg_Glob:Image;
+private var additional_ui:UIComponent;
 private function bgAction(param:Object):void{
 
 	var mc:MovieClip;
 	var bmpData:BitmapData = new BitmapData(view.width, view.height);
 	var tweenList:Array;
-	var bg:Bitmap;
+	var bg:Image;
 	var current_bg:Bitmap;
 	var loader:Loader = new Loader();
 	if(param.bg.hasOwnProperty("src")){
-		loader.contentLoaderInfo.addEventListener(Event.INIT, function(e:Event):void {
-			bmpData.draw(loader);
-		});
-		loader.loadBytes(ImgObj[param.bg.src]);
-		bg = new Bitmap(bmpData);
+		bg = new Image();
+		this.bg_Glob = new Image();
+		bg.source = ImgObj[param.bg.src];
+		this.bg_Glob.source = ImgObj[param.bg.src];
 	}
 	if (view.uicomp.numChildren > 1){
 		while (view.uicomp.numChildren > 1){
 			view.uicomp.removeChildAt(0);
 		}
 	}
-	if (view.uicomp.numChildren > 0){
-		current_bg = view.uicomp.getChildAt(0) as Bitmap;
+	if (view.background.source != null){
+		var bd:BitmapData = new BitmapData(view.width, view.height);
+		bd.draw(view.background);
+		current_bg = new Bitmap(bd);
 	}
 		if(param.bg.hasOwnProperty("type")){
-			view.uicomp.addChild(bg);
+			
 			if (param.bg["type"] == null){
 				var width:Number = view.width/10;
 				var height:Number = view.height;
@@ -312,6 +317,7 @@ private function bgAction(param:Object):void{
 				var s:Shape;
 				var mc_mask:MovieClip= new MovieClip();
 				var targets:Array=new Array();
+				view.background.source = bg.source;
 				while (i < 10){	
 					mask = new MovieClip();
 					s = new Shape();
@@ -325,9 +331,11 @@ private function bgAction(param:Object):void{
 					i = (i + 1);
 				}
 				if (current_bg != null){
-					view.uicomp.setChildIndex(current_bg, (view.uicomp.numChildren-1));
-					view.uicomp.addChild(mc_mask);
-					view.uicomp.mask = mc_mask;
+					this.additional_ui = new UIComponent();
+					additional_ui.addChild(current_bg);
+					additional_ui.addChild(mc_mask);
+					additional_ui.mask = mc_mask;
+					view.addElement(additional_ui);
 				}
 				this.tween = Tween24.lag(0.1, 
 					Tween24.tween(targets, 0.5, Tween24.ease.QuadOut).$x(width).width(0), 
@@ -337,10 +345,11 @@ private function bgAction(param:Object):void{
 				return;
 			}
 			else if (param.bg["type"] == "f" || param.bg["type"] == "q"){
-				this.tween = Tween24.serial(Tween24.tween(bg, 0, Tween24.ease.QuadOut).fadeOut().andRemoveChild());
+				this.tween = Tween24.serial(Tween24.tween(view.background, 0.1, Tween24.ease.QuadOut).fadeOut());
 			}
 			if(this.tween != null){
-				this.tween.addEventListener(Event.COMPLETE, this.onTweenComplete);
+				var func:Function;
+				this.tween.addEventListener(Event.COMPLETE, onTweenComplete);
 				this.tween.play();
 			}
 		}
@@ -352,18 +361,17 @@ private function bgAction(param:Object):void{
 	
 	private function onBgBlindComplete(event:Event) : void {
 		this.tween.removeEventListener(Event.COMPLETE, this.onBgBlindComplete);
-		if (view.uicomp.numChildren > 1){
-			view.uicomp.removeChildAt((view.uicomp.numChildren - 1));
+		if (this.additional_ui != null){
+			view.removeElement(this.additional_ui);
 		}
 		this.actionComplete();
 		return;
 	}
 	private function onTweenComplete(event:Event):void{
-		this.tween.removeEventListener(Event.COMPLETE, this.onTweenComplete);
+		this.tween.removeEventListener(Event.COMPLETE, onTweenComplete);
 		this.actionComplete();
 		return;
 	}
-	
 	private function actionComplete():void{
 		this.ScenarioIndex++;
 		view.dispatchEvent(new Event(ACTION_COMPLETE));

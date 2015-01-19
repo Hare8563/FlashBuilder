@@ -15,6 +15,8 @@
 			
 			import mx.controls.Alert;
 			
+			import a24.tween.Tween24;
+			
 			public var FullPath:String; 
 			private var _file:File; 
 			private var _FileStream:FileStream; 
@@ -94,6 +96,7 @@
 					//  ただし、展開処理で bytearray.uncompress(...) を使っているだけなので、なぜか解凍が失敗するものもあります。
 				}
 				addEventListener("complete_action", function(e:Event):void{
+					//Tween24.tween(view.background, 0, Tween24.ease.QuadInOut).fadeIn().play();
 					koiloader.script = null;
 					koiloader.action();
 					return;
