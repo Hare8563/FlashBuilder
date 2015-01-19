@@ -93,7 +93,13 @@
 					//  MACの濁点も解決します。
 					//  ただし、展開処理で bytearray.uncompress(...) を使っているだけなので、なぜか解凍が失敗するものもあります。
 				}
-				koiloader.loadedZipFile();
+				addEventListener("complete_action", function(e:Event):void{
+					koiloader.script = null;
+					koiloader.action();
+					return;
+				});
+				
+				koiloader.action();
 			}
 			private function onCancel(event:Event):void{
 				NativeApplication.nativeApplication.exit();
@@ -108,7 +114,7 @@
 	</fx:Declarations>
 
 	<s:Image id="background" x="0" y="0"/>
-	<mx:UIComponent id="effect" x="0" y="0"/> 
+	<mx:UIComponent id="uicomp" x="0" y="0"/> 
 	<s:SWFLoader id="mainContents" x="0" y="0" source="" />
 	<s:SWFLoader id="Character" source="" x="470" y="50"/>
 	<s:Group id="MessageWindowGroup" x="0" y="-940" width="940" height="1650"
