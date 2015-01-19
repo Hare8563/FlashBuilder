@@ -113,7 +113,7 @@
 		<local:MainLoader id="koiloader" />
 	</fx:Declarations>
 
-	<s:Image id="background" x="0" y="0"/>
+	<mx:Image id="background" x="0" y="0"/>
 	<mx:UIComponent id="uicomp" x="0" y="0"/> 
 	<s:SWFLoader id="mainContents" x="0" y="0" source="" />
 	<s:SWFLoader id="Character" source="" x="470" y="50"/>

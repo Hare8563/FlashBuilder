@@ -283,6 +283,7 @@ private function bgAction(param:Object):void{
 	var mc:MovieClip;
 	var bmpData:BitmapData = new BitmapData(view.width, view.height);
 	var tweenList:Array;
+	var bg:Bitmap;
 	var current_bg:Bitmap;
 	var loader:Loader = new Loader();
 	if(param.bg.hasOwnProperty("src")){
@@ -290,70 +291,75 @@ private function bgAction(param:Object):void{
 			bmpData.draw(loader);
 		});
 		loader.loadBytes(ImgObj[param.bg.src]);
-		current_bg = new Bitmap(bmpData);
+		bg = new Bitmap(bmpData);
 	}
-	view.uicomp.addChild(new Bitmap(bmpData));
-	this.actionComplete();
-	return;
-//	
-//		if(param.bg.hasOwnProperty("type")){
-//			if (param.bg["type"] == null){
-//				var width:Number = view.width/10;
-//				var height:Number = view.height;
-//				
-//				var i:int= 0;
-//				var mask:MovieClip;
-//				var s:Shape;
-//				var mc_mask:MovieClip= new MovieClip();
-//				var targets:Array=new Array();
-//				while (i < 10){	
-//					mask = new MovieClip();
-//					s = new Shape();
-//					s.graphics.beginFill(0);
-//					s.graphics.drawRect(0, 0, width, height);
-//					s.graphics.endFill();
-//					mask.addChild(s);
-//					mask.x = i * width;
-//					mc_mask.addChild(mask);
-//					targets.push(mask);
-//					i = (i + 1);
-//				}
-//				if (img != null){
-//					view.background.source = img.source;
-//					view.effect.addChild(mc_mask);
-//					view.effect.mask = mc_mask;		
-//				}
-//				this.tween = Tween24.lag(0.1, 
-//					Tween24.tween(targets, 0.5, Tween24.ease.QuadOut).$x(width).width(0), 
-//					Tween24.tween(targets, 0.5, Tween24.ease.ExpoInOut).fadeOut());
-//				this.tween.play();
-//				return;
-//			}
-//			else if (param.bg["type"] == "f" || param.bg["type"] == "q"){
-//				tweenList=new Array();
-//				if (view.background.source != null){
-//					this.tween = Tween24.serial(Tween24.tween(view.background, 0, Tween24.ease.QuadOut).fadeOut());
-//					this.tween.addEventListener(Tween24Event.COMPLETE, function(e:Event):void{
-//						view.background.source = img.source;
-//						Tween24.tween(view.background, 0, Tween24.ease.QuadInOut).fadeIn().play();
-//						return;
-//					});
-//					this.tween.play();
-//				}	
-//			}
-//		}
-//		else{
-//			return;
-//		}
-//		
+	if (view.uicomp.numChildren > 1){
+		while (view.uicomp.numChildren > 1){
+			view.uicomp.removeChildAt(0);
+		}
+	}
+	if (view.uicomp.numChildren > 0){
+		current_bg = view.uicomp.getChildAt(0) as Bitmap;
+	}
+		if(param.bg.hasOwnProperty("type")){
+			view.uicomp.addChild(bg);
+			if (param.bg["type"] == null){
+				var width:Number = view.width/10;
+				var height:Number = view.height;
+				
+				var i:int= 0;
+				var mask:MovieClip;
+				var s:Shape;
+				var mc_mask:MovieClip= new MovieClip();
+				var targets:Array=new Array();
+				while (i < 10){	
+					mask = new MovieClip();
+					s = new Shape();
+					s.graphics.beginFill(0);
+					s.graphics.drawRect(0, 0, width, height);
+					s.graphics.endFill();
+					mask.addChild(s);
+					mask.x = i * width;
+					mc_mask.addChild(mask);
+					targets.push(mask);
+					i = (i + 1);
+				}
+				if (current_bg != null){
+					view.uicomp.setChildIndex(current_bg, (view.uicomp.numChildren-1));
+					view.uicomp.addChild(mc_mask);
+					view.uicomp.mask = mc_mask;
+				}
+				this.tween = Tween24.lag(0.1, 
+					Tween24.tween(targets, 0.5, Tween24.ease.QuadOut).$x(width).width(0), 
+					Tween24.tween(targets, 0.5, Tween24.ease.ExpoInOut).fadeOut());
+				this.tween.addEventListener(Event.COMPLETE, this.onBgBlindComplete);
+				this.tween.play();
+				return;
+			}
+			else if (param.bg["type"] == "f" || param.bg["type"] == "q"){
+				this.tween = Tween24.serial(Tween24.tween(bg, 0, Tween24.ease.QuadOut).fadeOut().andRemoveChild());
+			}
+			if(this.tween != null){
+				this.tween.addEventListener(Event.COMPLETE, this.onTweenComplete);
+				this.tween.play();
+			}
+		}
+		else{
+			this.actionComplete();
+		}
 		return;
 	}
 	
 	private function onBgBlindComplete(event:Event) : void {
 		this.tween.removeEventListener(Event.COMPLETE, this.onBgBlindComplete);
-		if (this.mv_bg.numChildren > 1){
-			this.mv_bg.removeChildAt((this.mv_bg.numChildren - 1));
+		if (view.uicomp.numChildren > 1){
+			view.uicomp.removeChildAt((view.uicomp.numChildren - 1));
 		}
+		this.actionComplete();
+		return;
+	}
+	private function onTweenComplete(event:Event):void{
+		this.tween.removeEventListener(Event.COMPLETE, this.onTweenComplete);
 		this.actionComplete();
 		return;
 	}
