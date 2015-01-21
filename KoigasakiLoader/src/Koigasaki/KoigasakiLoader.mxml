@@ -117,8 +117,19 @@
 			font-family: myFont;			
 		}
 		
-		.myFont
+		.normalStyle
 		{
+			font-family: myFont;
+		}
+		.aColorStyle
+		{
+			borderColor: #FF0000;  
+			borderThickness: 10;  
+		}
+		.bColorStyle
+		{
+			borderColor: #7D6441;  
+			borderThickness: 1;  
 			font-family: myFont;
 		}
 
@@ -139,8 +150,10 @@
 		<mx:Button id="Close" click="koiloader.Close_clickHandler(event)" x="816" y="1420" upSkin="@Embed('assets/image 14.png')" downSkin="@Embed('assets/image 14.png')" overSkin="@Embed('assets/image 16.png')"/>
 		<s:SWFLoader x="829" y="1565" source="assets/sprite 13.swf"/>
 		<s:Label id="nameArea" x="149" y="1420" color="#FFFFFF" fontFamily="myFont" fontSize="27" fontWeight="normal"
-				 text=""/>
-		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF"  fontFamily="myFont"
+				 text="" />
+		
+		
+		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF" fontFamily="myFont"
 					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください" editable="false" selectable="false" />
 	</s:Group>
 	<mx:Button click="koiloader.Exit_clickHandler(event)" id="Exit" x="12" y="600" downSkin="@Embed('assets/image 23.png')"  overSkin="@Embed('assets/image 25.png')"

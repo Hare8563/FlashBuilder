@@ -14,6 +14,7 @@ package Koigasaki
 	import flash.media.SoundChannel;
 	import flash.system.LoaderContext;
 	import flash.text.TextField;
+	import flash.text.TextFormat;
 	
 	import mx.controls.Alert;
 	import mx.controls.Image;
@@ -137,7 +138,15 @@ package Koigasaki
 						Tween24.tween(mv_effect, 0.03).color(color, 0));
 				}
 				else if(effectParam.action == "tilt"){
-					this.tween = Tween24.serial(Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), Tween24.tween(this, 0).x(0).y(0));
+					this.tween = Tween24.serial(Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0.05).x(this.randomInt(-10, 10)).y(this.randomInt(-10, 10)), 
+						Tween24.tween(view, 0).x(0).y(0));
 				}
 				else if(effectParam.action =="action"){
 					var target:MovieClip;
@@ -400,8 +409,8 @@ package Koigasaki
 				serif = serif.replace(/{n1}/g,"晴男");
 			}
 			
-			view.msArea.setStyle("boderColor","#FF0000");
-			view.msArea.setStyle("borderWidth", 10);
+			
+			//view.msArea.setStyle("color", "#FF0000");
 			
 //			view.msArea.setStyle("borderWeight", 3);
 //			view.msArea.setStyle("borderColor", colors[param.text.color]);
