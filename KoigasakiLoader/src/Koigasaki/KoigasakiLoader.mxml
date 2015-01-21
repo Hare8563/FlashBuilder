@@ -121,17 +121,6 @@
 		{
 			font-family: myFont;
 		}
-		.aColorStyle
-		{
-			borderColor: #FF0000;  
-			borderThickness: 10;  
-		}
-		.bColorStyle
-		{
-			borderColor: #7D6441;  
-			borderThickness: 1;  
-			font-family: myFont;
-		}
 
 	</fx:Style>
 	
@@ -151,8 +140,6 @@
 		<s:SWFLoader x="829" y="1565" source="assets/sprite 13.swf"/>
 		<s:Label id="nameArea" x="149" y="1420" color="#FFFFFF" fontFamily="myFont" fontSize="27" fontWeight="normal"
 				 text="" />
-		
-		
 		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF" fontFamily="myFont"
 					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください" editable="false" selectable="false" />
 	</s:Group>

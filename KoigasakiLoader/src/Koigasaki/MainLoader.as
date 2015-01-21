@@ -13,25 +13,20 @@ package Koigasaki
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.system.LoaderContext;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
+	import flash.filters.GlowFilter;
 	
 	import mx.controls.Alert;
 	import mx.controls.Image;
 	import mx.core.IMXMLObject;
 	import mx.core.UIComponent;
 	import mx.events.CloseEvent;
-	import mx.styles.CSSStyleDeclaration;
 	
 	import spark.skins.spark.TextAreaSkin;
 	
 	import a24.tween.Tween24;
-	
 	import caurina.transitions.Tweener;
 	import caurina.transitions.properties.TextShortcuts;
 	
-	import flashx.textLayout.formats.TextLayoutFormat;
-
 	TextShortcuts.init();
 
 	public class MainLoader implements IMXMLObject
@@ -44,7 +39,7 @@ package Koigasaki
 
 		private var bg_Glob:Image;
 		private var additional_ui:UIComponent;
-		
+		private var current_soundObj:Sound;
 		
 		public var ScenarioObj:Object;
 		public var Mp3Obj:Object={};
@@ -270,12 +265,9 @@ package Koigasaki
 		private function bgmAction(param:Object):void{
 			var bgmData:Object = param.bgm;
 			if(bgmData.hasOwnProperty("src")){
-				var sound:Sound = Sound(Mp3Obj[bgmData.src]);
-				currentBgmChannel = sound.play();
-				currentBgmChannel.addEventListener(Event.SOUND_COMPLETE, function (e:Event):void{
-					//e.currentTarget.removeEventListener(Event.SOUND_COMPLETE, func);
-					currentBgmChannel = sound.play();
-				});
+				this.current_soundObj = Sound(Mp3Obj[bgmData.src]);
+				currentBgmChannel = this.current_soundObj.play();
+				currentBgmChannel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 			}
 			if(bgmData.hasOwnProperty("action")){
 				if(bgmData.action == "finish"){
@@ -284,6 +276,12 @@ package Koigasaki
 			}
 			this.actionComplete();
 			return;
+		}
+		private function onSoundComplete(event:Event):void{
+			currentBgmChannel.removeEventListener(Event.SOUND_COMPLETE, onSoundComplete);
+			//e.currentTarget.removeEventListener(Event.SOUND_COMPLETE, func);
+			currentBgmChannel = this.current_soundObj.play();
+			currentBgmChannel.addEventListener(Event.SOUND_COMPLETE, onSoundComplete);
 		}
 		private function charAction(param:Object):void{
 			var charProp:Object = param.char;
@@ -409,16 +407,13 @@ package Koigasaki
 				serif = serif.replace(/{n1}/g,"晴男");
 			}
 			
-			
-			//view.msArea.setStyle("color", "#FF0000");
-			
-//			view.msArea.setStyle("borderWeight", 3);
-//			view.msArea.setStyle("borderColor", colors[param.text.color]);
-//			
-//			var skin:TextAreaSkin = TextAreaSkin(view.msArea.skin); 
-//			skin.borderStroke.weight = 2;
-//			skin.borderStroke.color = colors[param.text.color];
-//			skin.setElementIndex(skin.border, skin.numElements - 1);
+			//文字の縁取り
+			if(param.text.hasOwnProperty("color")){
+				var glow : GlowFilter = new GlowFilter( colors[param.text.color], 1.0, 2, 2, 64, 3);    
+				TextAreaSkin(view.msArea.skin).filters = [glow];
+				view.nameArea.filters = [glow];
+			}
+
 			view.msArea.text = "";
 			view.nameArea.text = name;
 			var t:Number = serif.length * 0.05;
