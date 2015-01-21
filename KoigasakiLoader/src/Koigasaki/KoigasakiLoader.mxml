@@ -111,13 +111,26 @@
 		]]>
 	</fx:Script>
 	
+	<fx:Style>
+		@font-face {
+			src:url("assets/ヒラギノ丸ゴ Pro W4.otf");
+			font-family: myFont;			
+		}
+		
+		.myFont
+		{
+			font-family: myFont;
+		}
+
+	</fx:Style>
+	
 	<fx:Declarations>
 		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->	
 		<local:MainLoader id="koiloader" />
 	</fx:Declarations>
 
 	<mx:Image id="background" x="0" y="0"/>
-	<mx:UIComponent id="uicomp" x="0" y="0"/> 
+	
 	<s:SWFLoader id="mainContents" x="0" y="0" source="" />
 	<s:SWFLoader id="Character" source="" x="470" y="50"/>
 	<s:Group id="MessageWindowGroup" x="0" y="-940" width="940" height="1650"
@@ -125,12 +138,12 @@
 		<s:Image id="messageWindow" x="106" y="1393" source="assets/image 5.png"/>
 		<mx:Button id="Close" click="koiloader.Close_clickHandler(event)" x="816" y="1420" upSkin="@Embed('assets/image 14.png')" downSkin="@Embed('assets/image 14.png')" overSkin="@Embed('assets/image 16.png')"/>
 		<s:SWFLoader x="829" y="1565" source="assets/sprite 13.swf"/>
-		<s:Label id="nameArea" x="149" y="1420" color="#FFFFFF" fontFamily="ヒラギノ" fontSize="27" fontWeight="normal"
+		<s:Label id="nameArea" x="149" y="1420" color="#FFFFFF" fontFamily="myFont" fontSize="27" fontWeight="normal"
 				 text=""/>
-		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF"
-					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください" editable="false" selectable="false"/>
+		<s:TextArea id="msArea" x="149" y="1455" width="659" height="138" borderVisible="false" color="#FFFFFF"  fontFamily="myFont"
+					contentBackgroundAlpha="0.0" fontSize="32" text="ファイルを選択してください" editable="false" selectable="false" />
 	</s:Group>
 	<mx:Button click="koiloader.Exit_clickHandler(event)" id="Exit" x="12" y="600" downSkin="@Embed('assets/image 23.png')"  overSkin="@Embed('assets/image 25.png')"
 			 upSkin="@Embed('assets/image 23.png')" />
-
+	<mx:UIComponent id="uicomp" x="0" y="0"/> 
 </s:WindowedApplication>
