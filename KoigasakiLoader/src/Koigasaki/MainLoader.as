@@ -488,7 +488,6 @@ package Koigasaki
 						this.tween = Tween24.serial(Tween24.tween(view.background, 0.1, Tween24.ease.QuadOut).fadeOut());
 					}
 					if(this.tween != null){
-						var func:Function;
 						this.tween.addEventListener(Event.COMPLETE, onTweenComplete);
 						this.tween.play();
 					}
