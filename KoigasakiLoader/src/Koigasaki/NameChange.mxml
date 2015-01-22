@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="644" height="342">
+	<fx:Script>
+	<![CDATA[
+	]]>	
+	</fx:Script>
+		<fx:Style>
+		@font-face {
+			src:url("assets/ヒラギノ丸ゴ Pro W4.otf");
+			font-family: myFont;			
+		}
+		
+		.normalStyle
+		{
+			font-family: myFont;
+		}
+		
+	</fx:Style>
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
+	</fx:Declarations>
+	<s:Image x="0" y="0" source="assets/image 1354.png"/>
+	<mx:Button x="580" y="-5" id="exitButton" label="" upSkin="@Embed('assets/image 348.png')"/>
+	<s:Label x="243" y="46" fontFamily="myFont" fontSize="36" fontStyle="normal" fontWeight="normal"
+			 lineThrough="false" text="名前変更" textDecoration="none" verticalAlign="top"/>
+	<s:Label text="姓" x="110" y="190" fontSize="24" fontFamily="myFont"/>
+	<s:TextInput x="147" y="190" width="141" height="31" borderVisible="true"/>
+	<s:Label text="名" x="345" y="190" fontSize="24" fontFamily="myFont"/>
+	<s:TextInput x="385" y="190" width="141" height="31"/>
+	<mx:Button x="150" y="250" id="Cancel" upSkin="@Embed('assets/image 1363.png')"  />
+	<mx:Button x="385" y="250" id="Select" upSkin="@Embed('assets/image 1383.png')"  />
+</s:Group>
