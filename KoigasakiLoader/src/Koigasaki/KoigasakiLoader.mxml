@@ -16,6 +16,7 @@
 			import mx.controls.Alert;
 			
 			import a24.tween.Tween24;
+			import a24.tween.events.Tween24Event;
 			
 			public var FullPath:String; 
 			private var _file:File; 
@@ -110,15 +111,133 @@
 			private function onOpenWindow(event:Event):void{
 				var window:UIComponent = new UIComponent();
 				var nc:NameChange = new NameChange();
-				nc.exitButton.addEventListener(MouseEvent.CLICK, function(e:Event):void{
-					dispatchEvent(new Event("CloseNameWindow"));
+				
+				nc.first.text = koiloader.firstName;
+				nc.family.text = koiloader.familyName;
+				
+				//Exitボタンの上にのせるスプライト
+				var sprite:Sprite = new Sprite();
+				sprite.graphics.beginFill(0xFFFFFF, 0.5);
+				sprite.graphics.drawCircle(0,0,31);
+				sprite.x = 31;
+				sprite.y = 31;
+				sprite.alpha = 0;
+				var ui:UIComponent = new UIComponent();
+				ui.x = nc.exitButton.x;
+				ui.y = nc.exitButton.y;
+				ui.addChild(sprite);
+				nc.addElement(ui);
+				
+				//キャンセルボタンの上のスプライト
+				var cancel:Sprite = new Sprite();
+				cancel.graphics.beginFill(0xFFFFFF,0.5);
+				cancel.graphics.drawRoundRect(0,0,148, 47, 3,3);
+				cancel.alpha =0.0;
+				var cancelOver:UIComponent = new UIComponent();
+				cancelOver.x = nc.Cancel.x;
+				cancelOver.y = nc.Cancel.y;
+				cancelOver.addChild(cancel);
+				nc.addElement(cancelOver);
+				cancelOver.mouseEnabled = false;
+				cancel.mouseEnabled = false;
+				
+				//決定ボタンのうえのスプライト	
+				var decision:Sprite = new Sprite();
+				decision.graphics.beginFill(0xFFFFFF,0.5);
+				decision.graphics.drawRoundRect(0,0,148, 47, 3,3);
+				decision.alpha =0.0;
+				var decisionOver:UIComponent = new UIComponent();
+				decisionOver.x = nc.Decision.x;
+				decisionOver.y = nc.Decision.y;
+				decisionOver.addChild(decision);
+				nc.addElement(decisionOver);
+				decisionOver.mouseEnabled = false;
+				decision.mouseEnabled = false;
+				
+				
+				//決定ボタンをクリックしたときの処理
+				nc.Decision.addEventListener(MouseEvent.MOUSE_UP, function(e:Event):void{
+					var tween1:Tween24 = Tween24.serial(Tween24.tween(decision, 0.2).alpha(0.0));
+					if(nc.family.text != "" && nc.first.text != ""){
+						koiloader.familyName = nc.family.text;
+						koiloader.firstName = nc.first.text;
+					}
+					tween1.addEventListener(Tween24Event.COMPLETE, function(e:Event):void{dispatchEvent(new Event("CloseNameWindow"));return;});
+					tween1.play();
 					return;
 				});
+				
+				//決定ボタンにマウスをのせた処理
+				nc.Decision.addEventListener(MouseEvent.MOUSE_OVER, function(e:Event):void{
+					var tween:Tween24 = Tween24.serial(Tween24.tween(decision, 0.2).alpha(1.0));
+					tween.play();
+					return;
+				});
+				
+				//決定ボタンからマウスが離れた処理
+				nc.Decision.addEventListener(MouseEvent.MOUSE_OUT, function(e:Event):void{
+					var tween:Tween24 = Tween24.serial(Tween24.tween(decision, 0.2).alpha(0.0));
+					tween.play();
+					return;
+				});
+				
+				//キャンセルボタンをクリックしたときの処理
+				nc.Cancel.addEventListener(MouseEvent.MOUSE_UP, function(e:Event):void{
+					var tween1:Tween24 = Tween24.serial(Tween24.tween(cancel, 0.2).alpha(0.0));
+					tween1.addEventListener(Tween24Event.COMPLETE, function(e:Event):void{dispatchEvent(new Event("CloseNameWindow"));return;});
+					tween1.play();
+					return;
+				});
+				
+				//キャンセルボタンにマウスをのせた処理
+				nc.Cancel.addEventListener(MouseEvent.MOUSE_OVER, function(e:Event):void{
+					var tween:Tween24 = Tween24.serial(Tween24.tween(cancel, 0.2).alpha(1.0));
+					tween.play();
+					return;
+				});
+				
+				//キャンセルボタンからマウスが離れた処理
+				nc.Cancel.addEventListener(MouseEvent.MOUSE_OUT, function(e:Event):void{
+					var tween:Tween24 = Tween24.serial(Tween24.tween(cancel, 0.2).alpha(0.0));
+					tween.play();
+					return;
+				});
+				
+				
+				
+				//Exitボタンをクリックしたときの処理
+				ui.addEventListener(MouseEvent.MOUSE_DOWN, function(e:Event):void{
+					
+					var tween1:Tween24 = Tween24.serial(Tween24.tween(sprite, 0.2).alpha(1.0));
+					var tween2:Tween24 = Tween24.serial(Tween24.tween(nc.exitButton, 0).width(47).height(47), Tween24.tween(nc.exitButton, 0.2).width(61).height(61));
+					
+					var paraTween:Tween24 = Tween24.parallel(tween1,tween2);
+					paraTween.addEventListener(Tween24Event.COMPLETE, function(e:Event):void{dispatchEvent(new Event("CloseNameWindow"));return;});
+					paraTween.play();
+					return;
+				});
+				//Exitボタンにマウスをのせたときの処理
+				ui.addEventListener(MouseEvent.MOUSE_OVER,function(e:Event):void{
+					var tween:Tween24 = Tween24.serial(Tween24.tween(sprite, 0.2).alpha(1.0));
+					tween.play();
+					return;
+				});
+				//Exitボタンからマウスを放した処理
+				ui.addEventListener(MouseEvent.MOUSE_OUT,function(e:Event):void{
+					var tween:Tween24 = Tween24.serial(Tween24.tween(sprite, 0.2).alpha(0.0));
+					tween.play();
+					return;
+				});
+				
+				
+				//windowを表示
 				window.addChild(nc);
 				window.x = (this.width - 644) / 2;
 				window.y = ((this.height - 342) / 2) - 120;
 				this.addElement(window);
 				setClickable(false);
+				
+				//"CloseNameWindow"イベントをリッスンした時の処理
 				addEventListener("CloseNameWindow", function (e:Event):void{
 					removeElement(window);
 					setClickable(true);

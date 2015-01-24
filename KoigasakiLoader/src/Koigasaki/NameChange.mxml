@@ -22,13 +22,13 @@
 		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
 	</fx:Declarations>
 	<s:Image x="0" y="0" source="assets/image 1354.png"/>
-	<mx:Button x="580" y="-5" id="exitButton" label="" upSkin="@Embed('assets/image 348.png')"/>
+	<mx:Button x="580" y="-5" id="exitButton" label="" upSkin="@Embed('assets/image 348.png')" overSkin="@Embed('assets/image 348.png')" downSkin="@Embed('assets/image 348.png')" />
 	<s:Label x="243" y="46" fontFamily="myFont" fontSize="36" fontStyle="normal" fontWeight="normal"
 			 lineThrough="false" text="名前変更" textDecoration="none" verticalAlign="top"/>
 	<s:Label text="姓" x="110" y="190" fontSize="24" fontFamily="myFont"/>
-	<s:TextInput x="147" y="190" width="141" height="31" borderVisible="true"/>
+	<s:TextInput x="147" id="family" y="190" width="141" height="31" borderVisible="true"/>
 	<s:Label text="名" x="345" y="190" fontSize="24" fontFamily="myFont"/>
-	<s:TextInput x="385" y="190" width="141" height="31"/>
-	<mx:Button x="150" y="250" id="Cancel" upSkin="@Embed('assets/image 1363.png')"  />
-	<mx:Button x="385" y="250" id="Select" upSkin="@Embed('assets/image 1383.png')"  />
+	<s:TextInput id="first" x="385" y="190" width="141" height="31"/>
+	<mx:Button x="150" y="250" id="Cancel" upSkin="@Embed('assets/image 1363.png')" overSkin="@Embed('assets/image 1363.png')" downSkin="@Embed('assets/image 1367.png')"/>
+	<mx:Button x="385" y="250" id="Decision" upSkin="@Embed('assets/image 1383.png')" overSkin="@Embed('assets/image 1383.png')" downSkin="@Embed('assets/image 1387.png')" />
 </s:Group>

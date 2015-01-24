@@ -10,10 +10,10 @@ package Koigasaki
 	import flash.display.Shape;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.filters.GlowFilter;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.system.LoaderContext;
-	import flash.filters.GlowFilter;
 	
 	import mx.controls.Alert;
 	import mx.controls.Image;
@@ -24,6 +24,7 @@ package Koigasaki
 	import spark.skins.spark.TextAreaSkin;
 	
 	import a24.tween.Tween24;
+	
 	import caurina.transitions.Tweener;
 	import caurina.transitions.properties.TextShortcuts;
 	
@@ -48,6 +49,9 @@ package Koigasaki
 		public var script:Object = null;
 		public var currentSoundChannel:SoundChannel;
 		public var currentBgmChannel:SoundChannel;
+		
+		public var firstName:String = "晴男";
+		public var familyName:String = "花山";
 		
 		public static const ACTION_COMPLETE:String = "complete_action";
 		public static const ALIGN_LEFT_X:int = 230;
@@ -399,12 +403,12 @@ package Koigasaki
 			var serif:String = param.text.serif;
 			
 			if(name != null){
-				name = name.replace(/{s1}/, "花山");
-				name = name.replace(/{n1}/,"晴男");
+				name = name.replace(/{s1}/, this.familyName);
+				name = name.replace(/{n1}/, this.firstName);
 			}
 			if(serif != null){
-				serif = serif.replace(/{s1}/g, "花山");
-				serif = serif.replace(/{n1}/g,"晴男");
+				serif = serif.replace(/{s1}/g, this.familyName);
+				serif = serif.replace(/{n1}/g, this.firstName);
 			}
 			
 			//文字の縁取り
