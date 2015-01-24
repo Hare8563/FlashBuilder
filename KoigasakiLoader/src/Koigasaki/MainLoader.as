@@ -8,6 +8,7 @@ package Koigasaki
 	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.display.Shape;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.filters.GlowFilter;
@@ -334,6 +335,25 @@ package Koigasaki
 								var lip:MovieClip = mvClip.mv_char.mv_lip as MovieClip;
 								//lip.addEventListener(Event.EXIT_FRAME, function(e:Event):void{lip.stop();});
 								lip.gotoAndStop(charProp.lip + 1);	
+							}
+							if(charProp.hasOwnProperty("fashion")){
+								if(ImgObj.hasOwnProperty(charProp.fashion)){
+									var loader:Loader = new Loader();
+									var target:MovieClip = mvClip.mv_char.mv_target as MovieClip;
+									var mc_clothe:MovieClip = new MovieClip();
+									loader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event):void{
+										var loaderInfo:flash.display.LoaderInfo = flash.display.LoaderInfo(e.target);
+										var bmpData:BitmapData = new BitmapData(loaderInfo.width, loaderInfo.height, true, 0xFFFFFF);
+										bmpData.draw(loaderInfo.loader);
+										var bmp:Bitmap = new Bitmap(bmpData);
+										mc_clothe.addChild(bmp);
+										mc_clothe.x = -bmp.width / 2;
+										mc_clothe.y = -660;
+										target.addChild(mc_clothe);
+										Tween24.tween(mvClip.mv_char.mv_body, 0, Tween24.ease.QuadOut).fadeOut().play();
+								});
+									loader.loadBytes(ImgObj[charProp.fashion]);
+								}
 							}
 							view.Character.removeEventListener(Event.COMPLETE, arguments.callee);
 							actionComplete();

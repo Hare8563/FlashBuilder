@@ -72,7 +72,7 @@
 //							mainContents.loaderContext = loaderContext;
 //							mainContents.source = koiloader.MovieObj[filename];
 						}
-						if(/(\w+)\.jpg$/.test(filename)){
+						if(/(\w+)\.jpg$/.test(filename) || /(\w+)\.png$/.test(filename)){
 							koiloader.ImgObj[filename] = bytes;
 							//ロード法
 							//background.source = koiloader.ImgObj[filename];
